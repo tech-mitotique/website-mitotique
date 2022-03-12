@@ -16,14 +16,14 @@ jobs:
       uses: actions/checkout@v2
 
       name: Build step
-        run: echo "Build finished!!"
+      run: echo "Build finished!!"
       
       name: Test step
-        run: echo "Tests ran!!"
+      run: echo "Tests ran!!"
       
       name: Upload artifact step
-        uses: actions/download-artifact@v2
-        run: echo "Artifacts uploaded!!"
+      uses: actions/download-artifact@v2
+      run: echo "Artifacts uploaded!!"
 
   DeployDev:
     name: Deploy to Dev
@@ -32,7 +32,9 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Development
-    run: echo "Deployed to Dev"
+    steps:
+      name: Deploy
+      run: echo "Deployed to Dev"
   
   DeployStaging:
     name: Deploy to Staging
@@ -41,7 +43,9 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Staging
-    run: echo "Deployed to Staging"
+    steps:
+      name: Deploy
+      run: echo "Deployed to Staging"
   
   DeployProduction:
     name: Deploy to Production
@@ -49,4 +53,6 @@ jobs:
     needs: [ DeployStaging ]
     environment:
       name: Production
-    run: echo "Deployed to Prod"
+    steps:
+      name: Deploy
+      run: echo "Deployed to Prod"

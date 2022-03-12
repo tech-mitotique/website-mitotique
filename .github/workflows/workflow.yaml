@@ -23,7 +23,6 @@ jobs:
       
       - name: Upload artifact step
         uses: actions/download-artifact@v2
-        run: echo "Artifacts uploaded!!"
 
   DeployDev:
     name: Deploy to Dev

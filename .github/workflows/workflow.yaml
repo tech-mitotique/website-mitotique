@@ -50,6 +50,7 @@ jobs:
     name: Deploy to Production
     if: github.event.pull_request.merge == true
     needs: [ DeployStaging ]
+    runs-on: ubuntu-latest
     environment:
       name: Production
     steps:

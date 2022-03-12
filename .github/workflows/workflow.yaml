@@ -1,0 +1,52 @@
+name: website-mitotique workflow template
+
+on:
+  push:
+    branches: [ "develop" ]
+
+  pull_request:
+    branches: [ "master" ]
+    types: [ "opened", "closed" ]
+
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      uses: actions/checkout@v2
+
+      name: Build step
+        run: echo "Build finished!!"
+      
+      name: Test step
+        run: echo "Tests ran!!"
+      
+      name: Upload artifact step
+        uses: actions/download-artifact@v2
+        run: echo "Artifacts uploaded!!"
+
+  DeployDev:
+    name: Deploy to Dev
+    if: github.event_name == 'push' && github.event.ref == 'refs/heads/develop'
+    needs: [ Build ]
+    runs-on: ubuntu-latest
+    environment:
+      name: Development
+    run: echo "Deployed to Dev"
+  
+  DeployStaging:
+    name: Deploy to Staging
+    if: github.event_name == 'pull_request'
+    needs: [Build]
+    runs-on: ubuntu-latest
+    environment:
+      name: Staging
+    run: echo "Deployed to Staging"
+  
+  DeployProduction:
+    name: Deploy to Production
+    if: github.event.pull_request.merge == true
+    needs: [ DeployStaging ]
+    environment:
+      name: Production
+    run: echo "Deployed to Prod"

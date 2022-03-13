@@ -8,6 +8,10 @@ on:
 jobs:
   codeQuality:
     name: Code Quality Check
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
     uses: ./.github/workflows/codeQL.yaml
   
   codeLint:

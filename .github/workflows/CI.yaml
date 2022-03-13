@@ -1,0 +1,20 @@
+name: website-mitotique CI
+
+on:
+  push:
+    branches: [ "develop" ]
+
+
+jobs:
+  codeQuality:
+    name: Code Quality Check
+    uses: ./.github/workflows/codeQL.yaml
+  
+  codeLint:
+    name: Code lint check
+    uses: ./.github/workflows/lint.yaml
+  
+  test:
+    name: Build and Test
+    uses: ./.github/workflows/build.yaml
+  

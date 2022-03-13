@@ -19,6 +19,7 @@ jobs:
     uses: ./.github/workflows/lint.yaml
   
   test:
+    needs: [ codeQuality, codeLint ]
     name: Build and Test
     uses: ./.github/workflows/build.yaml
   

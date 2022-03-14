@@ -10,13 +10,13 @@ jobs:
     steps:
       uses: ./.github/workflows/build.yaml
 
-    - name: Upload artifact for deployment jobs
-      uses: actions/upload-artifact@v2
-      with:
-        name: python-app
-        path: |
-          . 
-          !venv/
+      - name: Upload artifact for deployment jobs
+        uses: actions/upload-artifact@v2
+        with:
+          name: python-app
+          path: |
+            . 
+            !venv/
   
   deployStaging:
     runs-on: ubuntu-latest

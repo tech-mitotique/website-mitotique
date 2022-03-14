@@ -7,16 +7,16 @@ on:
 jobs:
   build:
     name: Build and Test
-    steps:
-      uses: ./.github/workflows/build.yaml
-
-      - name: Upload artifact for deployment jobs
-        uses: actions/upload-artifact@v2
-        with:
-          name: python-app
-          path: |
-            . 
-            !venv/
+    uses: ./.github/workflows/build.yaml
+  
+  uploadArtifacts:
+    - name: Upload artifact for deployment jobs
+      uses: actions/upload-artifact@v2
+      with:
+        name: python-app
+        path: |
+          . 
+          !venv/
   
   deployStaging:
     runs-on: ubuntu-latest

@@ -21,9 +21,9 @@ jobs:
         python-version: ${{ matrix.python-version }}
     
     - name: Create and start virtual environment
-        run: |
-          python -m venv venv
-          source venv/bin/activate
+      run: |
+        python -m venv venv
+        source venv/bin/activate
     
     - name: Install Dependencies
       run: |

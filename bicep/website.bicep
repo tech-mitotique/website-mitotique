@@ -39,4 +39,8 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' = {
   name: appServicePlanName
   location: resourceLocation
   sku: environmentConfigMap[environment].appServicePlan.sku 
+  tags: {
+    env: environment
+    asset: 'website'
+  }
 }

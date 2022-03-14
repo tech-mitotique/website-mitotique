@@ -1,7 +1,12 @@
-"""Dummy module to test CI workflows"""
+"""Dummy module to test CI workflows
+"""
 
-def say_hi(name) -> None:
-    """ Dummy Function to say Hi"""
+def say_hi(name: str) -> None:
+    """Dummy Function to say Hi
+
+    Args:
+        name (str): Name to say Hi to.
+    """
     print(f"Hello {name}!!")
 
 if __name__ == '__main__':

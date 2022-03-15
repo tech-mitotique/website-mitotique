@@ -7,10 +7,9 @@ on:
 jobs:
   build:
     name: Build and Test
-    runs-on: ubuntu-latest
+    uses: ./.github/workflows/build.yaml
+
     steps:
-      - uses: ./.github/workflows/build.yaml
-  
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:

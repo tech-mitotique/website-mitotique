@@ -13,7 +13,7 @@ param resourceLocation string = resourceGroup().location
 // param resourceNameSuffix string = uniqueString(resourceGroup().id)
 
 var appServicePlanName = 'website-mitotique-plan-${environment}'
-var appServiceAppName = 'website-mitotique-app-${environment}'
+// var appServiceAppName = 'website-mitotique-app-${environment}'
 
 // Environment specific SKU setup
 var environmentConfigMap = {

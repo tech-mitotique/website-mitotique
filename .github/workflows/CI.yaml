@@ -21,7 +21,7 @@ jobs:
     uses: ./.github/workflows/lint.yaml
   
   test:
-    needs: [ codeQuality, codeLint ]
+    needs: [ codeLint ]
     name: Build and Test
     if: ${{ always() }}
     uses: ./.github/workflows/build.yaml

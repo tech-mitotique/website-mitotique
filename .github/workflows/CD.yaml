@@ -54,7 +54,7 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }} || 'http://www.google.com'  # Remove the link to google once correct app is deployed
     
     steps:
-      - name: Download artifact from build job
+    - name: Download artifact from build job
       uses: actions/download-artifact@v2
       with:
         name: website-mitotique

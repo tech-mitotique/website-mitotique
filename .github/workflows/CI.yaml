@@ -23,5 +23,6 @@ jobs:
   test:
     needs: [ codeQuality, codeLint ]
     name: Build and Test
+    if: ${{ always() }}
     uses: ./.github/workflows/build.yaml
   

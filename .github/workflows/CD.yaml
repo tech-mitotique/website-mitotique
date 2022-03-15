@@ -40,7 +40,7 @@ jobs:
     - name: Upload artifact for deployment jobs
       uses: actions/upload-artifact@v2
       with:
-        name: python-app
+        name: website-mitotique
         path: |
           . 
           !venv/
@@ -54,6 +54,12 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }} || 'http://www.google.com'  # Remove the link to google once correct app is deployed
     
     steps:
+      - name: Download artifact from build job
+      uses: actions/download-artifact@v2
+      with:
+        name: website-mitotique
+        path: .
+  
     - name: Login to Azure
       uses: azure/login@v1
       with:
@@ -64,14 +70,8 @@ jobs:
       with:
         deploymentName: ${{ github.run_number }}
         resourceGroupName: mitotique-dev
-        template: ./bicep/website.bicep
+        template: ./website-mitotique/bicep/website.bicep
         parameters: environment="dev"
-    
-    - name: Download artifact from build job
-      uses: actions/download-artifact@v2
-      with:
-        name: python-app
-        path: .
         
     # - name: 'Deploy to Azure Web App'
     #   uses: azure/webapps-deploy@v2

@@ -2,10 +2,9 @@ name: website-mitotique CI
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: ["develop"]
   pull_request:
-    branches: [ "master" ]
-
+    branches: ["master"]
 
 jobs:
   codeQuality:
@@ -15,14 +14,13 @@ jobs:
       contents: read
       security-events: write
     uses: ./.github/workflows/codeQL.yaml
-  
+
   codeLint:
     name: Code lint check
     uses: ./.github/workflows/lint.yaml
-  
+
   test:
-    needs: [ codeLint ]
+    needs: [codeLint]
     name: Build and Test
     if: ${{ always() }}
-    uses: ./.github/workflows/build.yaml
-  
+    uses: ./.github/workflows/build_test.yaml

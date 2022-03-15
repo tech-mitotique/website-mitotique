@@ -70,7 +70,7 @@ jobs:
       with:
         deploymentName: ${{ github.run_number }}
         resourceGroupName: mitotique-dev
-        template: ./website-mitotique/bicep/website.bicep
+        template: ./bicep/website.bicep
         parameters: environment="dev"
         
     # - name: 'Deploy to Azure Web App'

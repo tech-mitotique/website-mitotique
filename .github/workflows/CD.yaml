@@ -7,6 +7,7 @@ on:
 jobs:
   build:
     name: Build and Test
+    runs-on: ubuntu-latest
     steps:
       - name: Build
         uses: ./.github/workflows/build.yaml
@@ -28,11 +29,12 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }} || 'http://www.google.com'  # Remove the link to google once correct app is deployed
     
     steps:
-    - name: Deploy infrastructure
+    - name: Login to Azure
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-      
+    
+    - name: Deploy infrastructure
       uses: azure/arm-deploy@v1
       with:
         deploymentName: ${{ github.run_number }}

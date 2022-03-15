@@ -89,7 +89,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: deployStaging
     environment:
-      name: "development"
+      name: "production"
       url: "http://www.google.com" # Remove the link to google once correct app is deployed
     steps:
       - name: Dummy Step

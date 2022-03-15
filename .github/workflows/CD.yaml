@@ -7,16 +7,43 @@ on:
 jobs:
   build:
     name: Build and Test
-    uses: ./.github/workflows/build.yaml
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        python-version: [ "3.10" ]
 
     steps:
-      - name: Upload artifact for deployment jobs
-        uses: actions/upload-artifact@v2
-        with:
-          name: python-app
-          path: |
-            . 
-            !venv/
+    - uses: actions/checkout@v2
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Create and start virtual environment
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+    
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # pip install -r requirements.txt
+    
+    - name: Run Tests
+      run: |
+        echo "Running Tests!!"
+        # python manage.py test
+
+    - name: Upload artifact for deployment jobs
+      uses: actions/upload-artifact@v2
+      with:
+        name: python-app
+        path: |
+          . 
+          !venv/
   
   deployStaging:
     name: Staging Deployment

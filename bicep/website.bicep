@@ -18,6 +18,9 @@ var appServicePlanName = 'website-mitotique-plan-${environment}'
 // Environment specific SKU setup
 var environmentConfigMap = {
   dev: {
+    appServiceApp: {
+      alwaysOn: false
+    }
     appServicePlan: {
       sku: {
         name: 'F1'
@@ -26,6 +29,9 @@ var environmentConfigMap = {
     }
   }
   prod: {
+    appServiceApp: {
+      alwaysOn: false // change to true before going live
+    }
     appServicePlan: {
       sku: {
         name: 'F1'
@@ -38,7 +44,7 @@ var environmentConfigMap = {
 resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' = {
   name: appServicePlanName
   location: resourceLocation
-  sku: environmentConfigMap[environment].appServicePlan.sku 
+  sku: environmentConfigMap[environment].appServicePlan.sku
   tags: {
     env: environment
     asset: 'website'

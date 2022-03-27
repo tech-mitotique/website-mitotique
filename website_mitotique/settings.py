@@ -125,32 +125,47 @@ STATIC_ROOT = os.environ.get('DJANGO_STATIC_ROOT', '')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Need to figure out below logger correct setting. This overwrites Django default logger.
-# LOGGING = {
-#     'version': 1,   # Python logger dictConfig schema version. only valid value at present is 1.
-#     'disable_existing_logers': False,   # To preserve Django's default loggers.
+LOGGING = {
+    # Python logger dictConfig schema version. only valid value at present is 1.
+    'version': 1,
+    # To preserve Django's default loggers.
+    'disable_existing_loggers': False,
 
-#     'formatters': {
-#         'verbose': {
-#             'format': '%(asctime)s [%(levelname)s] [%(threadName)s] : '\
-#                 '%(module)s.%(funcName)s -> %(message)s',
-#         },
-#         'simple': {
-#             'format': '%(asctime)s [%(levelname)s] -> %(message)s',
-#         },
-#     },
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s [%(levelname)s] [%(threadName)s] : '\
+            '%(module)s.%(funcName)s -> %(message)s',
+        },
+        'simple': {
+            'format': '%(asctime)s [%(levelname)s] -> %(message)s',
+        },
+    },
 
-#     'handlers': {
-#         'console': {
-#             'class': 'logging.StreamHandler',
-#             'stream': 'ext://sys.stdout',
-#             'formatter': 'verbose',
-#         },
-#     },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+        'django.server': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+    },
 
-#     'loggers': {
-#         '': {
-#             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
-#             'handler': ['console']
-#         },
-#     },
-# }
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG'
+    },
+
+    'loggers': {
+        '': {
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            'handler': ['console'],
+        },
+        "django.server": {
+            "handlers": ["django.server"],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            "propagate": False,
+        },
+    },
+}

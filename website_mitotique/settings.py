@@ -124,9 +124,9 @@ STATIC_ROOT = os.environ.get('DJANGO_STATIC_ROOT', '')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-### Need to figure out below logger correct setting. This overwrites Django default logger.
+# Need to figure out below logger correct setting. This overwrites Django default logger.
 # LOGGING = {
-#     'version': 1,   # Python logger dictConfig schema version. The only valid value at present is 1.
+#     'version': 1,   # Python logger dictConfig schema version. only valid value at present is 1.
 #     'disable_existing_logers': False,   # To preserve Django's default loggers.
 
 #     'formatters': {

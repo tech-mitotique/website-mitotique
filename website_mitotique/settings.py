@@ -123,3 +123,34 @@ STATIC_ROOT = os.environ.get('DJANGO_STATIC_ROOT', '')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+### Need to figure out below logger correct setting. This overwrites Django default logger.
+# LOGGING = {
+#     'version': 1,   # Python logger dictConfig schema version. The only valid value at present is 1.
+#     'disable_existing_logers': False,   # To preserve Django's default loggers.
+
+#     'formatters': {
+#         'verbose': {
+#             'format': '%(asctime)s [%(levelname)s] [%(threadName)s] : '\
+#                 '%(module)s.%(funcName)s -> %(message)s',
+#         },
+#         'simple': {
+#             'format': '%(asctime)s [%(levelname)s] -> %(message)s',
+#         },
+#     },
+
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#             'stream': 'ext://sys.stdout',
+#             'formatter': 'verbose',
+#         },
+#     },
+
+#     'loggers': {
+#         '': {
+#             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+#             'handler': ['console']
+#         },
+#     },
+# }

@@ -24,3 +24,6 @@ jobs:
       - name: Analysing the code with pylint
         run: |
           pylint $(git ls-files '*.py')
+      - name: Lint Azure bicep files
+        run: |
+          az bicep build --file ./bicep/*.bicep --verbose

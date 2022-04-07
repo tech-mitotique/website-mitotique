@@ -8,4 +8,5 @@
 -i https://pypi.org/simple
 asgiref==3.5.0; python_version >= '3.7'
 django==4.0.3
+pillow==9.1.0
 sqlparse==0.4.2; python_version >= '3.5'

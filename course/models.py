@@ -15,12 +15,12 @@ class Discipline(models.Model):
     @admin.display(
         description='Number of Courses',
     )
-    def get_course_count(self):
+    def get_course_count(self) -> int:
         """ Get number of courses in a discipline
         Returns:
             int: course count
         """
-        return Course.objects.filter(discipline=self).count() #pylint: disable=no-member
+        return Course.objects.filter(discipline=self).count()
 
 
     def __str__(self) -> str:
@@ -83,7 +83,6 @@ class CourseUnits(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    #pylint: disable=too-few-public-methods
     class Meta:
         """ CourseUnits meta """
         unique_together = (('unit', 'course'), )

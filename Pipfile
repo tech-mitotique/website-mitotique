@@ -5,9 +5,12 @@ name = "pypi"
 
 [packages]
 django = "*"
+pillow = "*"
 
 [dev-packages]
 pylint = "*"
+pylint-django = "*"
+autopep8 = "*"
 
 [requires]
 python_version = "3.10"

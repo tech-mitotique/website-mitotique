@@ -3,3 +3,5 @@ load-plugins=pylint_django
 django-settings-module=website_mitotique.settings
 max-line-length=120
 suggestion-mode=yes
+
+ignore-paths=.*/migrations

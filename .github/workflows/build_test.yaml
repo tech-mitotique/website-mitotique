@@ -32,5 +32,4 @@ jobs:
 
       - name: Run Tests
         run: |
-          echo "Running Tests!!"
-          # python manage.py test
+          python manage.py test --force-color --timing --shuffle -v 2

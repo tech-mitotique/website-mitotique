@@ -6,8 +6,6 @@ on:
   pull_request:
     branches: ["master"]
 
-concurrency:
-  group: website-mitotique-CI
 
 jobs:
   codeQuality:

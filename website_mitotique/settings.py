@@ -118,7 +118,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = os.environ.get('DJANGO_STATIC_URL', 'static/')
-STATIC_ROOT = os.environ.get('DJANGO_STATIC_ROOT', '')
+STATIC_ROOT = os.environ.get('DJANGO_STATIC_ROOT', BASE_DIR / 'static')
+
+# Media files (User uploaded Images only)
+
+MEDIA_URL = os.environ.get('DJANGO_MEDIA_URL', 'media/')
+MEDIA_ROOT = os.environ.get('DJANGO_MEDIA_ROOT', BASE_DIR / 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

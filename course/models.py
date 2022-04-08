@@ -6,6 +6,7 @@ from django.contrib import admin
 
 logger = logging.getLogger(__name__)
 
+
 class Discipline(models.Model):
     """ Discipline model
     """
@@ -21,7 +22,6 @@ class Discipline(models.Model):
             int: course count
         """
         return Course.objects.filter(discipline=self).count()
-
 
     def __str__(self) -> str:
         return f"{self.discipline}"
@@ -39,16 +39,6 @@ class Unit(models.Model):
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-    def set_active(self) -> bool:
-        """ Set's a unit to be active
-
-        Returns:
-            bool: True on success, otherwise False
-        """
-        logger.info("Setting unit %s as active.", self.title)
-        self.is_active = True
-        return True
 
     def __str__(self) -> str:
         return f"{self.title}"
